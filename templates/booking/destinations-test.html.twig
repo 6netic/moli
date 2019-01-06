@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Limosquare{% endblock %}
+
+{% block stylesheets %}
+	
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/minty/bootstrap.min.css">
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	
+
+	<p id="ligne1">Destination : {{ location }}</p>
+
+	<p class="ligne2">Distance du trajet : <span id="distance"></p>
+
+	<p>
+	<table align="center" class="tableau">
+		{{ form_start(myForm) }}
+		<tr>
+			<input type="hidden" name="varDistance" id="varDistance" value="">
+			<td>Date de départ {{ form_widget(myForm.departureDate) }}</td>
+			<td class="espace2">Horaire de départ{{ form_widget(myForm.departureTime) }}<td>
+			<td class="espace2">Course partagée{{ form_widget(myForm.sharing) }}<td>
+			<td class="espace2" valign="bottom">{{ form_widget(myForm.save, { 'label': 'Afficher les tarifs de ce jour' }) }}</td>
+		</tr>
+		{{ form_end(myForm) }}
+	
+	</table>    
+	</p>
+
+	<br><br>
+	{% if nb_passagers is defined %}
+			
+		
+   			<div align="center">
+   			<table class="tableau" width="600">
+   				<tr>
+        		<td align="left">Heure :</td><td align="left">{{ horaire }}</td><td align="right"> Tarif: </td><td align="right">{{ prixCourse }} euros TTC </td><td align="right"><a href="{{ path('recording', {'horaire': horaire, 'location': location, 'dateRaw': dateRaw, 'partage': 'Oui'}) }}" class="btn btn-success">Je choisis cette horaire</a></td>
+        		</tr>
+   				{% for key, prixCourse in prixCourses %}
+   				<tr>
+        		{% set horaire = key %}
+        		<td align="left">Heure :</td><td align="left">{{ horaire }}</td><td align="right"> Tarif: </td><td align="right">{{ prixCourse }} euros TTC </td><td align="right"><a href="{{ path('recording', {'horaire': horaire, 'location': location, 'dateRaw': dateRaw, 'partage': 'Oui' }) }}" class="btn btn-success">Je choisis cette horaire</a></td>
+        		</tr>
+        		{% endfor %}
+        	</table>
+    		</div>
+    	
+	     
+		
+		
+		
+	{% elseif firstDisplay is defined %}
+
+	{% else %}
+		<div align="center">
+		<table class="tableau" width="600">
+   				<tr>
+        		<td align="left">Heure :</td><td align="left">{{ horaire }}</td><td align="right"> Tarif: </td><td align="right">{{ prixCourse }} euros TTC </td><td align="right"><a href="{{ path('recording', {'horaire': horaire, 'location': location, 'dateRaw': dateRaw, 'partage': partage }) }}" class="btn btn-success">Je choisis cette horaire</a></td>
+        		</tr>
+        </table>
+		</div>
+	{% endif %}	
+		<br><br>
+
+	
+{% endblock %}
+{% block javascripts %}
+	<script type="text/javascript">
+		console.log('destination');
+		function initMap() {
+                var origine = "17 Rue nationale, 60540 Belle-Église, France";
+                var destination = document.getElementById("form_destination").value ;
+		console.log(destination);
+		// var destinationA = '17 Rue nationale, 60540 Belle-Église, France';
+                // $location
+                var service = new google.maps.DistanceMatrixService;
+                service.getDistanceMatrix({
+                    origins: [origine],
+                    destinations: [destination],
+                    travelMode: 'DRIVING',
+                    unitSystem: google.maps.UnitSystem.METRIC,
+                    avoidHighways: false,
+                    avoidTolls: false
+                    }, function(response, status) {
+                        if (status !== 'OK') {
+                            alert('Error was: ' + status);
+                        } else {
+                            var originList = response.originAddresses;
+                            var destinationList = response.destinationAddresses;
+                            var laDistance = document.getElementById("distance");
+                            // outputDiv.innerHTML = '';
+                            var resultat = response.rows[0].elements;
+					laDistance.innerHTML = resultat[0].distance.text + " pour une durée de trajet estimée à : " + resultat[0].duration.text ;
+					//document.getElementById("varDistance").value = 60;
+					document.getElementById("varDistance").value = resultat[0].distance.value;
+					// document.getElementById("varDuree").value = resultat[0].duration.value;
+					console.log(resultat[0].distance.value);
+					// console.log(resultat[0].duration.value);
+					console.log(document.getElementById("varDistance").value);
+                        }
+                });
+		}	
+
+	</script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFwyV7Ne-QtBvFXAgiuI2RjqgcSVBGWaA&callback=initMap"></script>
+	
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="formix">
+			<p id='ligne1'>Réservations - LimoSquare</p>
+	      	<a href="{{ path('index_route') }}">
+	      	<button type="submit" class="noms_Passagers">Réserver une navette</button></a>
+	      	<span class="espace"></span>
+	      	<button type="submit" class="noms_Passagers">Annuler une réservation</button>	
+	      		<br /><br />
+	      	</p>
+			<p id='ligne1'>Booking - LimoSquare</p>
+			
+			<button type="submit" class="noms_Passagers">Book a shuttle</button>
+			<span class="espace"></span>
+	      	<button type="submit" class="noms_Passagers">Cancel a booking</button>	
+	      		<br /><br />
+	</div>	
+	    
+	<p id="affichError2"></p>
+{% endblock %}

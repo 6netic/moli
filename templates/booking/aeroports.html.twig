@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Limosquare{% endblock %}
+
+{% block body %}
+	<table width="257" border="0" cellpadding="0" cellspacing="0" align="center">
+	<tr>
+		<td>
+			<img src="{{ asset('images/aeroports_03.png') }}" width="257" height="75" alt="" align="left">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="{{ path('destinations_route', {'location':'Aéroport d\'Orly'}) }}">
+				<img src="{{ asset('images/aeroports_05.png') }}" width="257" height="102" alt="Orly" align="left">
+			</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="{{ path('destinations_route', {'location':'Aéroport de Beauvais'}) }}">
+				<img src="{{ asset('images/aeroports_06.png') }}" width="257" height="112" alt="Beauvais" align="left">
+			</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="{{ path('destinations_route', {'location':'Aéroport Charles De Gaulle'}) }}">
+				<img src="{{ asset('images/aeroports_07.png') }}" width="257" height="112" alt="Charles De Gaulle" align="left">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<img src="{{ asset('images/aeroports_08.png') }}" width="257" height="132" alt="" align="left">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="{{ path('index_route') }}">
+				<img src="{{ asset('images/aeroports_09.png') }}" width="257" height="80" alt="retour" align="left">
+			</a>
+		</td>
+	</tr>
+	<tr>
+		<td>	
+			<img src="{{ asset('images/aeroports_10.png') }}" width="257" height="104" alt="" align="left">
+		</td>
+	</tr>
+</table>
+
+{% endblock %}

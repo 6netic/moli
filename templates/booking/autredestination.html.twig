@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Limosquare{% endblock %}
+
+{% block body %}
+	<p id="ligne1">Choix d'une autre destination</p>
+	{{ form_start(formulaire) }}
+		<table class="tableau" align="center">
+			<tr><td class="intitule">Destination : </td><td align="center">{{ form_widget(formulaire.destination, { 'attr': {'style': 'width: 500px'} }) }}</td></tr>
+			<tr><td class="espace1"></td><td align="center">{{ form_widget(formulaire.save, {'label': 'Etape suivante'}) }}
+			</td></tr>
+		</table>
+	{{ form_end(formulaire) }}
+
+
+
+{% endblock %}
+{% block javascripts %}
+	<script type="text/javascript">
+    	console.log("Bonjour");
+		document.getElementById('form_destination').focus();		
+		var defaultBounds = new google.maps.LatLngBounds(
+			new google.maps.LatLng(49.615582,-1.769906), new google.maps.LatLng(43.269854,5.942125)
+		);
+		var options = { bounds: defaultBounds };
+		function activatePlacesSearch(){
+		var input = document.getElementById('form_destination');
+		var autocomplete = new google.maps.places.Autocomplete(input,options);
+		} 
+    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFwyV7Ne-QtBvFXAgiuI2RjqgcSVBGWaA&libraries=places&callback=activatePlacesSearch"></script>
+{% endblock %}

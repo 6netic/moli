@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Limosquare{% endblock %}
+
+{% block stylesheets %}
+	
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/minty/bootstrap.min.css">
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<p id="ligne1">Destination : {{ location }}</p>
+	{{ form_start(myForm) }}
+	<table class="tableau" align="center">
+		<tr><td class="espace1">Date de départ : </td><td align="center">{{ dateRaw | date("d/m/Y") }}</td></tr>
+		<tr><td class="espace1">Heure du départ : </td><td align="center">{{ horaire }}</td></tr>
+		<tr><td class="espace1">Partage de la course : </td><td align="center">{{ partage }}</td></tr>
+		<tr><td class="espace1">Nom : </td><td>{{ form_widget(myForm.lastname) }}</td></tr><tr><td></td></tr>
+		<tr><td class="espace1">Prénom : </td><td>{{ form_widget(myForm.firstname) }}</td></tr><tr><td></td></tr>
+		<tr><td class="espace1">Email : </td><td>{{ form_widget(myForm.email) }}</td></tr><tr><td></td></tr>
+		<tr><td class="espace1"></td><td align="center">{{ form_widget(myForm.save, {'label': 'Enregistrer'}) }}</td></tr>
+	</table>
+	{{ form_end(myForm) }}
+	
+	<br><br>
+	{# % if nb_passagers is defined % #}
+			
+		{# % for key, prixCourse in prixCourses % #}
+   			<div align="center">
+   			<table class="tableau" width="600">
+   				<tr>
+        		
+        		</tr>
+        	</table>
+    		</div>
+    	{# % endfor % #}
+	     
+		
+		
+		
+	{# % elseif firstDisplay is defined % #}
+
+	{# % else % #}
+		<div align="center">
+		<table>
+   				<tr>
+        		
+        		</tr>
+        </table>
+		</div>
+	{# % endif % #}	
+		<br><br>
+	
+	
+{% endblock %}

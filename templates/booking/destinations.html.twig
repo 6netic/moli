@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Limosquare{% endblock %}
+
+{% block stylesheets %}
+	
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/minty/bootstrap.min.css">
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<p id="ligne1">Destination : {{ location }}</p>
+	<p>
+	{{ form_start(myForm) }}
+	<table align="center">
+		<tr>
+			<td>Date de départ {{ form_widget(myForm.departureDate) }}</td>
+			<td class="espace2">Horaire de départ{{ form_widget(myForm.departureTime) }}<td>
+			<td class="espace2">Partage de la course : {{ form_widget(myForm.sharing) }}<td>
+			<td class="espace2" valign="bottom">{{ form_widget(myForm.save, { 'label': 'Afficher les tarifs de ce jour' }) }}</td>
+		</tr>
+	</table>    
+	{{ form_end(myForm) }}
+	</p>
+
+{% if bookings is defined %}	
+	{% for booking in bookings %}
+		{{ booking.departureDate | date('d/m/Y') }} - {{ booking.departureTime }} - {{ booking.lastname }} : {{ booking.firstname }} - email : {{ booking.email }} <br>
+	{% endfor %}
+{% endif %}	
+	<br><br>
+{% if timeValues is defined %}
+	{% for key, timeValue in timeValues %}
+		Heure : {{ key }} - Réservation(s) enregistrée(s) : {{ timeValue }} <br>
+	{% endfor %}
+{% endif %}	
+
+	
+	
+{% endblock %}

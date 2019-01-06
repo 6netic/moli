@@ -1,0 +1,147 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Limosquare{% endblock %}
+
+{% block body %}
+	<table align="center" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td colspan="5">
+				<img src="{{ asset('images/bienvenue_01.png') }}" width="675" height="66" alt="" align="left" />
+			</td>	
+			<td>
+				<img src="{{ asset('images/spacer.gif') }}" width="1" height="66" alt="" align="left">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<img src="{{ asset('images/bienvenue_02.png') }}" width="365" height="66" alt="" align="left">
+			</td>
+			<td rowspan="2">
+				<a href="{{ path('gares_route') }}">
+				<img src="{{ asset('images/bienvenue_03.png') }}" width="284" height="108" alt="Gares" align="left"></a>
+			</td>
+			<td rowspan="6">
+				<img src="{{ asset('images/bienvenue_04.png') }}" width="26" height="734" alt="" align="left">
+			</td>
+			<td>
+				<img src="{{ asset('images/spacer.gif') }}" width="1" height="66" alt="" align="left">
+			</td>
+		</tr>
+		<tr>
+			<td rowspan="5">
+				<img src="{{ asset('images/bienvenue_05.png') }}" width="8" height="668" alt="" align="left">
+			</td>
+			<td rowspan="3">
+				<a href="{{ path('aeroports_route') }}"><img src="{{ asset('images/bienvenue_06.png') }}" width="302" height="120" alt="Aéroports" align="left"></a>
+			</td>
+			<td rowspan="5"><img src="{{ asset('images/bienvenue_07.png') }}" width="55" height="668" alt="" align="left">
+			</td>
+			<td>
+				<img src="{{ asset('images/spacer.gif') }}" width="1" height="42" alt="" align="left">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="{{ asset('images/bienvenue_08.png') }}" width="284" height="58" alt="" align="left">
+			</td>
+			<td>
+				<img src="images/spacer.gif" width="1" height="58" alt="" align="left">
+			</td>
+		</tr>
+		<tr>
+			<td rowspan="2">
+				<a href="{{ path('autre_route') }}"><img src="{{ asset('images/bienvenue_09.png') }}" width="284" height="89" alt="Autre" align="left">
+				</a>
+			</td>
+			<td>
+				<img src="{{ asset('images/spacer.gif') }}" width="1" height="20" alt="" align="left">
+			</td>
+		</tr>
+		<tr>
+			<td rowspan="2">
+				<img src="{{ asset('images/bienvenue_10.png') }}" width="302" height="548" alt="" align="left">
+			</td>
+			<td>
+				<img src="{{ asset('images/spacer.gif') }}" width="1" height="69" alt="" align="left">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="{{ asset('images/bienvenue_11.png') }}" width="284" height="479" alt="" align="left">
+			</td>
+			<td>
+				<img src="{{ asset('images/spacer.gif') }}" width="1" height="479" alt="" align="left">
+			</td>
+		</tr>
+	</table>
+    
+{% endblock %}
+
+
+{% block title %}
+	{{ parent() }}
+{% endblock %}
+
+{% block limoplatform_body %}
+	<table id="Tableau_01" width="257" cellpadding="0" cellspacing="0" align="center">	
+		<tr>
+			<td>
+				{% image 'bundles/limoplatform/images/destinations_03.png' %}
+					<img src="{{ asset_url }}" alt="" width="257" height="75" align="left">
+				{% endimage %}
+			</td>		
+		</tr>
+		<tr>
+			<td>	
+				{% image 'bundles/limoplatform/images/destinations_05.png' %}
+					<a href="{{ path('limo_platform_aeroports') }}">
+						<img src="{{ asset_url }}" alt="aeroports" width="257" height="102" align="left">
+					</a>
+				{% endimage %}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{% image 'bundles/limoplatform/images/destinations_06.png' %}
+					<a href="{{ path('limo_platform_gares') }}">
+						<img src="{{ asset_url }}" width="257" height="112" alt="gares" align="left">
+					</a>
+				{% endimage %}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{% image 'bundles/limoplatform/images/destinations_07.png' %}
+					<a href="{{ path('limo_platform_autre') }}">
+						<img src="{{ asset_url }}" width="257" height="112" alt="autre" align="left">
+					</a>
+				{% endimage %}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{% image 'bundles/limoplatform/images/destinations_08.png' %}
+					<img src="{{ asset_url }}" width="257" height="132" alt="" align="left">
+				{% endimage %}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{% image 'bundles/limoplatform/images/destinations_09.png' %}
+					<a href="{{ path('limo_platform_homepage') }}">
+						<img src="{{ asset_url }}" width="257" height="80" alt="retour" align="left">
+					</a>
+				{% endimage %}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{% image 'bundles/limoplatform/images/destinations_10.png' %}
+					<img src="{{ asset_url }}" width="257" height="104" alt="" align="left">
+				{% endimage %}
+			</td>
+		</tr>
+	</table>	
+
+	<p id="affichError2"></p>
+{% endblock %}
